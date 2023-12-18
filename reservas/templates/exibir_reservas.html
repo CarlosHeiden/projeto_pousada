@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendário de Reservas</title>
+    <style>
+        .reserva {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calendário de Reservas</h1>
+    
+    {% for apartamento, reservas in reservas_por_apartamento.items %}
+        <h2>{{ apartamento.nome }}</h2>
+        <table border="1">
+            <tr>
+                <th>Data Entrada</th>
+                <th>Data Saida</th>
+            </tr>
+            {% for reserva in reservas %}
+                <tr class="reserva">
+                    <td>{{ reserva.data_entrada }}</td>
+                    <td>{{ reserva.data_saida }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+    {% endfor %}
+</body>
+</html>
