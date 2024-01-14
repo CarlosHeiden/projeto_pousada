@@ -1,7 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calendário de Reservas</title>
+    <meta http-equiv="refresh" content="60">
+    <title>EXIBIR RESERVAS</title>
     <style>
         .reserva {
             font-weight: bold;
@@ -10,19 +12,38 @@
     </style>
 </head>
 <body>
-    <h1>Calendário de Reservas</h1>
+    <h1>Reservas por Apartamento
+    </h1>
     
     {% for apartamento, reservas in reservas_por_apartamento.items %}
         <h2>{{ apartamento.nome }}</h2>
         <table border="1">
             <tr>
+                <th>Nome Cliente</th>
                 <th>Data Entrada</th>
                 <th>Data Saida</th>
+                <th>Data pgto Reserva</th>
+                <th>Vl. pago reserva</th>
+                <th>Preco diaria</th>
+                <th>Vl. total diarias</th>
+                <th>Tx. Limpeza</th>
+                <th>Saldo a pagar</th>
             </tr>
             {% for reserva in reservas %}
                 <tr class="reserva">
-                    <td>{{ reserva.data_entrada }}</td>
-                    <td>{{ reserva.data_saida }}</td>
+                    <td>{{ reserva.nome_cliente }}</td>
+                    <td>{{ reserva.data_entrada |date:"d/m/Y" }}</td>
+                    <td>{{ reserva.data_saida |date:"d/m/Y" }}</td>
+                    <td>{{ reserva.data_pgto_reserva |date:"d/m/Y" }}</td>
+                    <td>R$ {{ reserva.vl_pgto_reserva }}</td>
+                    <td>R$ {{ reserva.preco_diaria }}</td>
+                    <td>R$ {{ reserva.valor_total_diarias }}</td>
+                    <td>R$ {{ reserva.taxa_limpeza }}</td>
+                    <td>R$ {{ reserva.saldo_a_pagar }}</td>
+                    <td>
+                        <a href="{% url 'editar_reserva' reserva.id %}">Editar</a>
+                        <a href="{% url 'excluir_reserva' reserva.id %}">Excluir</a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>
@@ -30,3 +51,4 @@
     {% endfor %}
 </body>
 </html>
+

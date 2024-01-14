@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSULTAR DATAS RESERVA</title>
+</head>
+<body>
+    <h1>Consultar Datas para Reserva</h1>
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message.message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    <form method="post" id="consultaForm">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">CONSULTAR DATAS</button><br>
+      <br>
+      <button type="button" onclick="reloadPageWithoutFormData();">LIMPAR CONSULTA</button>
+    </form>
+
+    {% if reservas_ativas %}
+      <h2>Reservas Ativas:</h2>
+      <ul>
+        {% for reserva in reservas_ativas %}
+          <li>
+            Cliente: {{ reserva.nome_cliente }}<br>
+            Apartamento: {{ reserva.nome_apartamento }}<br>
+            Data de Entrada: {{ reserva.data_entrada|date:"d/m/Y" }}<br>
+            Data de Saída: {{ reserva.data_saida|date:"d/m/Y" }}<br>
+            Preço Diária: {{ reserva.preco_diaria }}<br>
+            Valor Pagamento Reserva: {{ reserva.vl_pgto_reserva }}<br>
+            Taxa de Limpeza: {{ reserva.taxa_limpeza }}<br>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <script>
+      function reloadPageWithoutFormData() {
+        // Limpa os campos do formulário
+        document.getElementById('consultaForm').reset();
+        // Recarrega a página sem manter o histórico de envio do formulário
+        window.location.replace(window.location.href);
+      }
+    </script>
+</body>
+</html>

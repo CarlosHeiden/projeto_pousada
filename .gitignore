@@ -1,0 +1,6 @@
+.venv
+.venv/
+rascunho.txt
+db.sqlite3
+abrir_djangio_linux.sh
+
