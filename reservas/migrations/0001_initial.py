@@ -11,60 +11,60 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name="Apartamentos",
+            name='Apartamentos',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
-                ("nome", models.CharField(max_length=100)),
-                ("numero_pessoas", models.IntegerField()),
+                ('nome', models.CharField(max_length=100)),
+                ('numero_pessoas', models.IntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name="Reservas",
+            name='Reservas',
             fields=[
                 (
-                    "id",
+                    'id',
                     models.BigAutoField(
                         auto_created=True,
                         primary_key=True,
                         serialize=False,
-                        verbose_name="ID",
+                        verbose_name='ID',
                     ),
                 ),
-                ("nome_cliente", models.CharField(max_length=100)),
-                ("data_reserva", models.DateField()),
-                ("data_entrada", models.DateField()),
-                ("data_saida", models.DateField()),
+                ('nome_cliente', models.CharField(max_length=100)),
+                ('data_reserva', models.DateField()),
+                ('data_entrada', models.DateField()),
+                ('data_saida', models.DateField()),
                 (
-                    "preco_diaria",
+                    'preco_diaria',
                     models.DecimalField(
                         blank=True, decimal_places=2, max_digits=5, null=True
                     ),
                 ),
                 (
-                    "taxa_limpeza",
+                    'taxa_limpeza',
                     models.DecimalField(
                         blank=True, decimal_places=2, max_digits=5, null=True
                     ),
                 ),
                 (
-                    "valor_total",
+                    'valor_total',
                     models.DecimalField(
                         blank=True, decimal_places=2, max_digits=10, null=True
                     ),
                 ),
                 (
-                    "nome_apartamento",
+                    'nome_apartamento',
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="reservas.apartamentos",
+                        to='reservas.apartamentos',
                     ),
                 ),
             ],
