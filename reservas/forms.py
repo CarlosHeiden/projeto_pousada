@@ -16,7 +16,11 @@ class DateInput(forms.DateInput):
 class FormMiniCalendario(forms.ModelForm):
     # campos para gerar formulario de cadastro de reserva
     nome_apartamento = forms.ModelChoiceField(
+<<<<<<< HEAD
         queryset=Apartamentos.objects.all().order_by('nome')
+=======
+        queryset=Apartamentos.objects.all()
+>>>>>>> 7e4f72a17fa080c3f621ebb2eba4e76fb9577b7c
     )
     data_pgto_reserva = forms.DateField(widget=DateInput())
     data_entrada = forms.DateField(widget=DateInput())
@@ -39,7 +43,11 @@ class FormMiniCalendario(forms.ModelForm):
 class FormConsultarReservas(forms.ModelForm):
     # formulário para consulta de reservas por apartamento e período
     nome_apartamento = forms.ModelChoiceField(
+<<<<<<< HEAD
         queryset=Apartamentos.objects.all().order_by('nome')
+=======
+        queryset=Apartamentos.objects.all()
+>>>>>>> 7e4f72a17fa080c3f621ebb2eba4e76fb9577b7c
     )
     data_entrada = forms.DateField(widget=DateInput())
     data_saida = forms.DateField(widget=DateInput())
@@ -52,7 +60,11 @@ class FormConsultarReservas(forms.ModelForm):
 class FormEditarReserva(forms.ModelForm):
     # campos para gerar formulario para editar reserva
     nome_apartamento = forms.ModelChoiceField(
+<<<<<<< HEAD
         queryset=Apartamentos.objects.all().order_by('nome')
+=======
+        queryset=Apartamentos.objects.all()
+>>>>>>> 7e4f72a17fa080c3f621ebb2eba4e76fb9577b7c
     )
     data_pgto_reserva = forms.DateField()
     data_entrada = forms.DateField()
