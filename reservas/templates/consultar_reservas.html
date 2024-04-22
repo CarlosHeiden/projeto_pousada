@@ -26,6 +26,9 @@
       <button type="submit">CONSULTAR DATAS</button><br>
       <br>
       <button type="button" onclick="reloadPageWithoutFormData();">LIMPAR CONSULTA</button>
+      <br>
+      <br>
+      <a href="{% url 'menu' %}" class="btn btn-primary">Voltar ao Menu</a>
     </form>
 
     {% if reservas_ativas %}
