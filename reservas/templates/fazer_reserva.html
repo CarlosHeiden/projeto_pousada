@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt_br">
 <head>
-    <meta http-equiv="refresh" content="60">
-    <meta charset="UTF-8">
+      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAZER RESERVA</title>
+    <style>
+      body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Fazer Reserva</h1>
@@ -15,10 +20,24 @@
         {% endfor %}
       </ul>
     {% endif %}
-    <form method="post">
+    <form method="post" id="reservasform">
       {% csrf_token %}
       {{ form.as_p }}
       <button type="submit">SALVAR RESERVA</button>
+      <br>
+      <br>
+      <button type="button" onclick="reloadPageWithoutFormData();">LIMPAR FORMULARIO RESERVA</button>
+      <br>
+      <br>
+      <a href="{% url 'menu' %}" class="btn btn-primary">Voltar ao Menu</a>
     </form>
+    <script>
+      function reloadPageWithoutFormData() {
+        // Limpa os campos do formulário
+        document.getElementById('reservasform').reset();
+        // Recarrega a página sem manter o histórico de envio do formulário
+        window.location.replace(window.location.href);
+      }
+    </script>
 </body>
 </html>

@@ -66,7 +66,7 @@ def fazer_reserva(request):
 
 
 def exibir_reservas(request):
-    apartamentos = Apartamentos.objects.all()
+    apartamentos = Apartamentos.objects.all().order_by('nome')
     reservas_por_apartamento = {}
 
     for apartamento in apartamentos:
@@ -155,3 +155,6 @@ def excluir_reserva(request, reserva_id):
         reserva.delete()
         return redirect('exibir_reservas')
     return render(request, 'excluir_reserva.html', {'reserva': reserva})
+
+def menu(request):
+    return render(request, 'menu.html')
